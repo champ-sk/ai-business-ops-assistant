@@ -9,3 +9,5 @@ openai
 psycopg2-binary
 tiktoken
 langchain-openai
+sqlalchemy
+psycopg2-binary
