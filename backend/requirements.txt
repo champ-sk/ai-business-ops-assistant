@@ -11,3 +11,6 @@ tiktoken
 langchain-openai
 sqlalchemy
 psycopg2-binary
+langchain-openai
+langchain-text-splitters
+

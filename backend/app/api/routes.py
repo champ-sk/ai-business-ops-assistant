@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from app.services.llm_service import LLMService
-
+from app.api.schemas import IngestRequest
+from app.services.ingestion_service import IngestionService
 
 router = APIRouter(prefix="/api")
 
@@ -13,3 +14,9 @@ def test_llm(prompt: str):
     llm = LLMService()
     output = llm.simple_chat(prompt)
     return {"response": output}
+
+@router.post("/ingest")
+def ingest_document(request: IngestRequest):
+    ingestion_service = IngestionService()
+    result = ingestion_service.ingest_document(title = request.title, content=request.content)
+    return result
