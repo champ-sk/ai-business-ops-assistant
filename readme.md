@@ -56,4 +56,28 @@ we will try it step by step
     After these steps we aheve: 
         Documents stored successfully
         Embeddings generated and saved
-        RAG knowledge base working end-to-end    
+        RAG knowledge base working end-to-end   
+
+4 - Similarity Search & RAG Question Answering
+        Implemented vector similarity search using pgvector to find the most relevant document chunks.
+        Converted user questions into embeddings and matched them against stored document embeddings.
+        Built a RAG (Retrieval-Augmented Generation) pipeline that:
+            Retrieves top-K relevant chunks from the database
+            Injects them as context into the LLM prompt
+            Forces the model to answer only from retrieved context
+        Created a new API endpoint /api/ask for asking questions over ingested documents.
+        Successfully tested question answering using personal profile data stored in the database.       
+
+    After these steps we have: 
+        Ingest documents dynamically
+        Convert them into embeddings
+        Store them in a vector database
+        Retrieve relevant context using similarity search
+        Answer user questions using RAG without hallucination    
+
+
+##  Question Answering API – Input & Output
+
+<img src="assets/qa_input.png" alt="QA Input" width="700"/>
+<img src="assets/qa_output.png" alt="QA Output" width="700"/>
+
