@@ -81,3 +81,17 @@ we will try it step by step
 <img src="assets/qa_input.png" alt="QA Input" width="700"/>
 <img src="assets/qa_output.png" alt="QA Output" width="700"/>
 
+5 - Added document-level citation
+        Enhanced the retrieval layer to return document titles along with content chunks.
+        Implemented citations so each answer includes the source document(s) used.
+        Updated the RAG pipeline to generate explainable answers, improving trust and reliability.
+        
+    After these step we have
+        Answers which include document sources
+        Retrieval joins document metadata correctly
+        RAG responses are explainable   
+
+##  Question Answering API – Input & Output
+
+<img src="assets/citation_input.png" alt="QA Input" width="700"/>
+<img src="assets/citation_output.png" alt="QA Output" width="700"/>

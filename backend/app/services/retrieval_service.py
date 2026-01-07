@@ -13,9 +13,10 @@ class RetrievalService:
         with engine.connect() as conn:
             results = conn.execute(
                 text("""
-                    SELECT chunk_text
-                    FROM document_embeddings
-                    ORDER BY embedding <-> (:query_embedding)::vector(3072)
+                    SELECT d.title, e.chunk_text
+                    FROM document_embeddings e
+                    JOIN documents d ON d.id = e.document_id
+                    ORDER BY e.embedding <-> (:query_embedding)::vector(3072)
                     LIMIT :top_k
                 """),
                 {
@@ -24,4 +25,7 @@ class RetrievalService:
                 }
             ).fetchall()
 
-        return [row[0] for row in results]
+        return [
+            {"title": row[0], "chunk": row[1]}
+            for row in results
+        ]

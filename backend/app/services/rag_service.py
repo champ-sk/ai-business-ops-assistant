@@ -11,9 +11,12 @@ class RAGService:
         contexts = self.retriever.retrieve(question)
 
         if not contexts:
-            return "No relevant information found in the documents."
-
-        context_text = "\n\n".join(contexts)
+            return {
+                "answer": "I don't know based on the available documents.",
+                "sources": []
+            }
+        context_text = "\n\n".join( f"[Source: {item['title']}]\n{item['chunk']}"
+            for item in contexts)
 
         prompt = f"""
 You are an assistant that answers questions strictly using the provided context.
@@ -28,4 +31,13 @@ Question:
 Answer:
 """
 
-        return self.llm.simple_chat(prompt)
+        answer =  self.llm.simple_chat(prompt)
+        sources = list({item["title"] for item in contexts})
+
+        return {
+            "answer": answer,
+            "sources": sources
+        }
+
+
+
