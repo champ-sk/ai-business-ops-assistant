@@ -95,3 +95,9 @@ we will try it step by step
 
 <img src="assets/citation_input.png" alt="QA Input" width="700"/>
 <img src="assets/citation_output.png" alt="QA Output" width="700"/>
+
+6-  Conversation Memory added
+        Added persistent conversation memory using PostgreSQL.
+        Stored recent questions and answers to maintain chat context.
+        Injected conversation history into the RAG prompt to support follow-up questions.
+        Ensured memory is used only for reference resolution, not hallucination.
