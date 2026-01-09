@@ -101,3 +101,26 @@ we will try it step by step
         Stored recent questions and answers to maintain chat context.
         Injected conversation history into the RAG prompt to support follow-up questions.
         Ensured memory is used only for reference resolution, not hallucination.
+
+
+7 - LangGraph & Agentic Workflows
+        Introduced LangGraph to build controlled, agentic AI workflows.\n
+        Implemented an AI decision node to select actions based on user intent.
+        Added tool-based execution for RAG queries, email drafting, and task creation.
+        Built a deterministic AI graph for reliable and debuggable behavior.  
+
+    After adding agentic workflow 
+        The assistant can now decide what to do, not just what to answer.
+        Can choose the correct tool based on question.
+
+##  Question Answering API – from endpoint : /api/agent
+
+##  Asking RAG related question
+<img src="assets\agent_qa.png" alt="QA Output" width="700"/>
+<img src="assets\agent_rag_ans.png" alt="QA Output" width="700"/>
+
+##  Asking Email related question
+<img src="assets\agent_qa2.png" alt="QA Output" width="700"/>
+<img src="assets\agent_email_ans.png" alt="QA Output" width="700"/>
+
+
