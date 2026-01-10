@@ -124,3 +124,16 @@ we will try it step by step
 <img src="assets\agent_email_ans.png" alt="QA Output" width="700"/>
 
 
+
+8 - Production Readiness & Reliability  
+
+        Added structured logging across core services.  
+        Implemented safe error handling for LLM calls.    
+        Introduced LLM usage tracking for cost visibility.    
+        Added basic input guardrails to prevent misuse.    
+        Hardened configuration for production environments.  
+
+    After adding all this now:
+        The system is now reliable, observable, and production-ready.    
+
+

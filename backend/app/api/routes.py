@@ -32,6 +32,8 @@ def ingest_document(request: IngestRequest):
 
 @router.post("/ask")
 def ask_question(request: QuestionRequest):
+    if len(request.question) > 500:
+        return {"error": "Question too long"}    
     rag = RAGService()
     answer = rag.answer(request.question)
     return {"answer": answer}

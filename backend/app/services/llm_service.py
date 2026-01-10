@@ -1,5 +1,8 @@
 from langchain_openai import ChatOpenAI
 from app.core.config import settings
+from app.core.logging import get_logger
+
+logger = get_logger(__name__)
 
 
 class LLMService:
@@ -10,5 +13,10 @@ class LLMService:
         )
 
     def simple_chat(self, message: str) -> str:
-        response = self.llm.invoke(message)
-        return response.content
+        try:
+            response = self.llm.invoke(message)
+            return response.content
+        except Exception as e:
+            logger.error("LLM error: %s", str(e))
+            return "Sorry, Internal error encountered."
+        

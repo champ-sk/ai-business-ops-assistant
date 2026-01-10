@@ -1,7 +1,9 @@
 from app.services.llm_service import LLMService
 from app.services.retrieval_service import RetrievalService
 from app.services.memory_service import MemoryService
+from app.core.logging import get_logger
 
+logger = get_logger(__name__)
 
 class RAGService:
     def __init__(self):
@@ -10,6 +12,9 @@ class RAGService:
         self.memory = MemoryService()
 
     def answer(self, question: str):
+
+        logger.info("Received question: %s", question)
+
         # 1. Retrieve recent conversation history
         history = self.memory.get_recent()
 
@@ -20,6 +25,7 @@ class RAGService:
 
         # 2. Retrieve relevant document chunks
         contexts = self.retriever.retrieve(question)
+        logger.info("Retrieved %d context chunks", len(contexts))
 
         if not contexts:
             answer = "I don't know based on the available documents."
@@ -60,6 +66,8 @@ Answer:
 
         # 6. Extract unique source titles
         sources = list({item["title"] for item in contexts})
+        
+        logger.info("Generated answer with %d sources", len(sources))
 
         return {
             "answer": answer,
